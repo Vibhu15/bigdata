@@ -4,8 +4,8 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
+ // , routes = require('./routes')
+ // , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
 
@@ -28,7 +28,7 @@ app.configure('development', function(){
 });
 
 //app.get('/', routes.index);
-app.get('/users', user.list);
+//app.get('/users', user.list);
 
 //CDN
 var cloudinary = require('cloudinary');
@@ -40,15 +40,16 @@ cloudinary.config({
   api_secret: 'U-JdMPulnf3H1dKobheXevwjhio' 
 });
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 
 app.get('/index.htm', function (req, res) {
-   res.sendFile( __dirname + "/" + "index.htm" );
+   res.sendfile( __dirname + "/" + "index.htm" );
 });
 
 app.get('/', function(request, response){
-   response.sendFile( path.join(__dirname + "/" +'home.html'));
+	 console.log("I am here");
+   response.sendfile( path.join(__dirname + "/" +'home.html'));
 });
 app.get('/process_get', function (req, res) {
    // Prepare output in JSON format
