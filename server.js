@@ -27,7 +27,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
+//app.get('/', routes.index);
 app.get('/users', user.list);
 
 //CDN
@@ -47,9 +47,9 @@ app.get('/index.htm', function (req, res) {
    res.sendFile( __dirname + "/" + "index.htm" );
 });
 
-//app.get('/', function(request, response){
-//    response.sendFile( path.join(__dirname + "/" +'home.html'));
-//});
+app.get('/', function(request, response){
+   response.sendFile( path.join(__dirname + "/" +'home.html'));
+});
 app.get('/process_get', function (req, res) {
    // Prepare output in JSON format
    var searchItem;

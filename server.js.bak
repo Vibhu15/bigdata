@@ -64,7 +64,8 @@ db.users.find({name: searchItem}, function(err, users) {
   if( err || !users) console.log("No product found");
   else users.forEach( function(femaleUser) {
     console.log(femaleUser);
-  } );
+  });
+});
 });
 
 http.createServer(app).listen(app.get('port'), function(){
