@@ -27,6 +27,12 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+var databaseUrl = "13.85.74.134:27017/ecommerce"; // "username:password@example.com/mydb"
+var collections = ["users"]
+//var db = require("mongojs").connect(databaseUrl, collections);
+
+var mongojs = require('mongojs');
+var db = mongojs(databaseUrl, collections);
 //app.get('/', routes.index);
 //app.get('/users', user.list);
 
