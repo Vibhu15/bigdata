@@ -45,11 +45,11 @@ app.use(express.static('public'));
 
 app.get('/index.htm', function (req, res) {
    res.sendFile( __dirname + "/" + "index.htm" );
-})
+});
 
-#app.get('/', function(request, response){
-#    response.sendFile( path.join(__dirname + "/" +'home.html'));
-#});
+//app.get('/', function(request, response){
+//    response.sendFile( path.join(__dirname + "/" +'home.html'));
+//});
 app.get('/process_get', function (req, res) {
    // Prepare output in JSON format
    var searchItem;
@@ -64,7 +64,8 @@ db.users.find({name: searchItem}, function(err, users) {
   if( err || !users) console.log("No product found");
   else users.forEach( function(femaleUser) {
     console.log(femaleUser);
-  } );
+  });
+});
 });
 
 http.createServer(app).listen(app.get('port'), function(){
