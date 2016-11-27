@@ -1,0 +1,8 @@
+yarn jar /home/cloudera/workspace/UtopiaVoteCount/bin/UtopiaVoteCount.jar utopiaMR/VoteCountApplication /user/cloudera/UtopiaBoothFiles /user/cloudera/voteCountOutput2
+
+yarn jar /home/cloudera/workspace/UtopiaVoteCount/bin/UtopiaVoteCount.jar  /user/cloudera/UtopiaBoothFiles /user/cloudera/voteCountOutput
+
+http://localhost:8888/
+
+
+https://youtu.be/yk4A0eX4BBE
