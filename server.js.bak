@@ -44,7 +44,7 @@ cloudinary.config({
 
 
 app.get('/index.htm', function (req, res) {
-   res.sendFile( __dirname + "/" + "index.htm" );
+   res.sendfile( __dirname + "/" + "index.htm" );
 });
 
 app.get('/', function(request, response){
