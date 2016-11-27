@@ -14,7 +14,9 @@ var app = express();
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
+  //app.set('view engine', 'jade');
+  app.set('view engine', 'ejs');
+  app.engine('html', require('ejs').renderFile);
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
@@ -57,7 +59,10 @@ app.get('/', function(request, response){
 //	 console.log("I am here");
    response.sendfile( path.join(__dirname + "/" +'home.html'));
 });
+
+
 app.get('/process_get', function (req, res) {
+	var age;
    // Prepare output in JSON format
    var searchItem;
    response = {
@@ -71,7 +76,11 @@ db.users.find({name: searchItem}, function(err, users) {
   if( err || !users) console.log("No product found");
   else users.forEach( function(femaleUser) {
     console.log(femaleUser);
+		age = 	femaleUser.age;
+		 console.log("age"+age);
   });
+   console.log("finalage"+age);
+   res.render(__dirname + '/home.html',{ userAgeDiv: age});
 });
 });
 
