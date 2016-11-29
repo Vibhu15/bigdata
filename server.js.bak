@@ -11,6 +11,30 @@ var express = require('express')
 
 var app = express();
 
+var elasticsearch = require('elasticsearch');
+var client = new elasticsearch.Client({
+  hosts: [
+    {
+      protocol: 'http',
+      host: 'localhost',
+      port: 9200
+    }
+  ]
+});
+
+client.ping({
+  requestTimeout: 30000,
+
+}, function (error) {
+  if (error) {
+    console.error('Cluster is not available !');
+  } else {
+    console.log('All clear!');
+  }
+});
+
+
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -65,23 +89,35 @@ app.get('/process_get', function (req, res) {
 	var age;
    // Prepare output in JSON format
    var searchItem;
+   var displayVal
    response = {
       searchItem:req.query.searchItem
      //last_name:req.query.last_name
    };
   searchItem = response.searchItem;
- console.log("searchItem"+searchItem);
-db.users.find({name: searchItem}, function(err, users) {
- console.log("finding");
-  if( err || !users) console.log("No product found");
-  else users.forEach( function(femaleUser) {
-    console.log(femaleUser);
-		age = 	femaleUser.age;
-		 console.log("age"+age);
+ console.log("searchItem ElaStic"+searchItem);
+
+client.search({
+	
+  index: 'hello',
+  type: 'world',
+  body: {
+    query: {
+      match: {
+        desc: searchItem
+      }
+    }
+  }
+}).then(results => {
+    console.log(results);
+    console.log('returned article titles:');
+    results.hits.hits.forEach(
+      (hit, index) => console.log(++index +'****'+JSON.stringify(hit)
+      )
+    )
+ 
   });
-   console.log("finalage"+age);
-   res.render(__dirname + '/home.html',{ userAgeDiv: 'age'});
-});
+
 });
 
 http.createServer(app).listen(app.get('port'), function(){
