@@ -90,6 +90,7 @@ app.get('/process_get', function (req, res) {
    // Prepare output in JSON format
    var searchItem;
    var displayVal
+	   var jsonObj;
    response = {
       searchItem:req.query.searchItem
      //last_name:req.query.last_name
@@ -111,13 +112,14 @@ client.search({
 }).then(results => {
     console.log(results);
     console.log('returned article titles:');
-    results.hits.hits.forEach(
-      (hit, index) => console.log(++index +'****'+JSON.stringify(hit)
-      )
-    )
- 
+    results.hits.hits.forEach(function(items) {
+    console.log('items'+items);
+		age = 	JSON.stringify(items);
+		 console.log("age"+age);
   });
-
+   console.log("finalage"+age);
+   res.render(__dirname + '/home.html',{ userAgeDiv: age});
+}); 
 });
 
 http.createServer(app).listen(app.get('port'), function(){
