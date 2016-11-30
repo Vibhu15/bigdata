@@ -48,11 +48,11 @@
 			var brand = " Adidas ";
 			var price = " $45.00 ";
 			var rating = " 5 ";
-			var rating1 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_20/v1480389207/rating_1.jpg" //document.getElementById("rating");
-			var rating2 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_20/v1480389207/rating_2.jpg";
-			var rating3 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_20/v1480389207/rating_3.jpg";
-			var rating4 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_20/v1480389207/rating_4.jpg";
-			var rating5 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_20/v1480389207/rating_5.jpg";
+			var rating1 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_30/v1480389207/rating_1.jpg" //document.getElementById("rating");
+			var rating2 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_30/v1480389207/rating_2.jpg";
+			var rating3 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_30/v1480389207/rating_3.jpg";
+			var rating4 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_30/v1480389207/rating_4.jpg";
+			var rating5 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_30/v1480389207/rating_5.jpg";
 
 			var searchResultsJson = '['+searchResults+']';
 

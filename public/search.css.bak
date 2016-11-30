@@ -1,21 +1,21 @@
 body{
-background-color:#F9E79F;
+background-color:lightgray;
 }
 
 #top{
   float:top;
   position: relative;
-  width:1340px;
+  width:1200px;
   height: 150px;
-  background-color:#F5B7B1;
+  background-color:#191970;
   }
 
 #left{
   float:left;
-  position: absolute;
-  width:200px;
-  height: 550px;
-  background-color:#F9E79F;
+  position: relative;
+/*  width:200px;
+  height: 550px;*/
+  background-color:	#F5F5F5;
   }
 
 
@@ -23,23 +23,42 @@ background-color:#F9E79F;
   float:bottom;
   position: relative;
   top: 300px;
-  width:1340px;
+  width:1200px;
   height: 250px;
   background-color:#BDC3C7;
  }
 
 #footerinfo{
-width: 1000px;
+width: 1200px;
 border-spacing:10px;
+  height: 250px;
 text-align:left;
 }
 
 p{
+ position: relative;
  text-align: right;
- font-size: 20px;
+ font-size: 15px;
  font-weight: bold;
+ color: 	#F0F8FF;
+}
+tr:hover{background-color:#f5f5f5}
+
+.tableStyle {
+    border-collapse: collapse;
+	/*border: 1px solid black;*/
+    width: 100%;
 }
 
+.tdStyle {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #000080;
+	font-style: normal; 
+	font-size:16px;
+	color: red;
+	font: sans-serif;
+}
 
 .searchProduct,.collapsed{
   width:500px;

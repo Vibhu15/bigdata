@@ -1,12 +1,12 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
  <head>
   <meta charset="UTF-8">
   <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
-  <title>Document</title>
+  <meta name="Richa Mishra" content="">
+  <meta name="Fall2016 MIS Project" content="">
+  <meta name="Ecommerce Search Engine" content="">
+  <title>Welcome to Online Store !! </title>
    <link rel = "stylesheet"
    type = "text/css"
    href = "search.css" />
@@ -15,62 +15,76 @@
  </head>
 
  <body>
- <form class="searchForm" method="get" action="/process_get">              
-  <input class="searchTerm"  placeholder="Search…" autocomplete="off" type ="text" name="searchItem"/>
-  <input type="submit" class="searchBtn" value="GO"/>
-			  <ul class="suggestionBox" style="">
-          <li><b>a</b>pples</li>
-				  <li><b>a</b>ndroid</li>
-				  <li><b>a</b>mazon</li>
-				  <li><b>a</b>ol</li>
-				  <li><b>a</b>tlanta</li>
-			  </ul>
-</form>
 
-<label id="userAgeDiv1">
-jsdhaks <%= userAgeDiv %></label>
-<!--
-<form class="searchForm" method="get" action="">              
-  <input class="searchTerm"  placeholder="Search…" autocomplete="off"/>
-  <input type="submit" class="searchBtn" value="GO"/>
-			  <ul class="suggestionBox">
-          <li><b>a</b>pple</li>
-				  <li><b>a</b>ndroid</li>
-				  <li><b>a</b>mazon</li>
-				  <li><b>a</b>ol</li>
-				  <li><b>a</b>tlanta</li>
-			  </ul>
-</form>
-
-<form class="searchForm" method="get" action="">              
-  <input class="searchTerm"  placeholder="Search…" autocomplete="off"/>
-  <input type="submit" class="searchBtn" value="GO"/>
-			  <ul class="suggestionBox">
-          <li><b>a</b>pple</li>
-				  <li><b>a</b>ndroid</li>
-				  <li><b>a</b>mazon</li>
-				  <li><b>a</b>ol</li>
-				  <li><b>a</b>tlanta</li>
-			  </ul>
-</form>
-
-<form class="searchForm collapsed" method="get" action="">              
-  <input class="searchTerm"  placeholder="Search…" autocomplete="off"/>
-  <input type="submit" class="searchBtn" value="GO"/>
-			  <ul class="suggestionBox">
-          <li><b>a</b>pple</li>
-				  <li><b>a</b>ndroid</li>
-				  <li><b>a</b>mazon</li>
-				  <li><b>a</b>ol</li>
-				  <li><b>a</b>tlanta</li>
-			  </ul>
-</form>
-  -->
-<div>
-<img src="http://res.cloudinary.com/rmishra/image/upload/v1479860841/image1.jpg" 
-     width="636" height="424"/>
+ <form class="searchForm" method="get" action="/process_get">    
+ <div id="top" >
+ <div>
+<img align="left" src="http://res.cloudinary.com/rmishra/image/upload/v1480447328/Online_shopping.png" 
+     width="300" height="150"/>
 	 </div>
 
+  <input class="searchTerm"  placeholder="Search…" autocomplete="off" type ="text" name="searchItem"/>
+  <input type="image" class="searchBtn" src="http://res.cloudinary.com/rmishra/image/upload/v1480370740/search_engine.png" />
+<div align="right" style="position:relative;top:120px;font-weight:bold;color:#F0F8FF;">
+ Hello, Richa<!--p id="username"/> <input type="button" onclick="javascript:showname();" value="displayname"/> --> 
+<img alt="cart" src="http://res.cloudinary.com/rmishra/image/upload/v1480373870/shopping_cart.jpg" width="20" height="20"/> &nbsp; cart 
+</div>
+</div>
 
- </body>
+<div id="left"> </div>
+
+<div align="center" id="myDynamicTable">
+<!--<input type="button" id="create" value="Click here" onclick="javascript:addTable()"> -->
+<div style="display:none;"  id="searchResults"><%= searchResults %></div>
+</div>
+		  
+</form>
+<br>
+<div id="footer"> 
+
+<table align="center"  id="footerinfo">
+  <tr>
+    <th>Get to Know Us</th>
+    <th>Connect with Us</th>
+    <th>Make Money with Us</th>
+	<th>Let Us Help You</th>
+  </tr>
+  <tr>
+    <td><a href="#"> About Us </a> </td>
+    <td><a href="#"> Facebook </a></td>
+    <td><a href="#"> Refer & Earn Rs.200</a></td>
+	<td><a href="#"> Your Account</a></td>
+  </tr>
+  <tr>
+    <td><a href="#"> Careers</a></td>
+    <td><a href="#"> Twitter</a></td>
+    <td><a href="#"> Sell on Online Store</a></td>
+	<td><a href="#"> Returns Centre </a></td>
+  </tr>
+  <tr>
+    <td><a href="#"> Press Releases</a></td>
+    <td><a href="#"> Instagram</a></td>
+    <td><a href="#"> Become an Affiliate</a></td>
+	<td><a href="#"> 100% Purchase Protection</a></td>
+  </tr>
+  <tr>
+    <td><a href="#"> Online Store Cares</a></td>
+    <td><a href="#"> The OnlineStore.in Blog</a></td>
+    <td><a href="#"> Advertise Your Products</a></td>
+	<td><a href="#"> Help</a></td>
+  </tr>
+  <tr>
+    <td><a href="#"> Gift a Smile</a></td>
+    <td></td>
+    <td></td>
+	<td><a href="#"> Online Store Assistant</a></td>
+  </tr>
+</table>
+
+
+
+
+</div>
+
+</body>
 </html>
