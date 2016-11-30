@@ -18,7 +18,11 @@ background-color:lightgray;
   background-color:	#F5F5F5;
   }
 
-.fluid-img{width:40%;}
+.fluid-img{width:80%;}
+.fluid-img1{width:55%;
+ position: relative;
+   height: 150px;
+ }
 
 #footer{
   float:bottom;

@@ -69,11 +69,12 @@
 				   var td = document.createElement('TD');				  
 				   td.setAttribute("class", "tdStyle" );
 					image=result.img;
-					alert(image);
+					//alert(image);
 				   if(j==0){						   
 						td.width='25%';
 						var DOM_img = document.createElement("img");
 						DOM_img.src = image;
+						DOM_img.setAttribute("class", "fluid-img1" );
 						td.appendChild(DOM_img);
 
 				   }else if(j ==1){				
