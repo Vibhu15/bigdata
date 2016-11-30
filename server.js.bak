@@ -1,46 +1,51 @@
 
 /**
+ *@Author: Richa Mishra - University of South Florida
+ *Big data Fall2016 Project - Ecommerce website
  * Module dependencies.
  */
 
-var express = require('express')
+	var express = require('express')
   , routes = require('./routes')
  // , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
 
-var app = express();
+//#1 NodeJS Express Framework
+	var app = express();
 
-
-var redis = require("redis");
-
+//#2 Redis Application Cache
+	var redis = require("redis");
   // Add your cache name and access key.
-var redisClient = redis.createClient(6380,'shopdeal.redis.cache.windows.net', {auth_pass: 'jO7xTK/QlyhwvQyWQJ8mvllHPquLPpkzMAMbDwMir0I=', tls: {servername: 'shopdeal.redis.cache.windows.net'}});
+	var redisClient = redis.createClient(6380,'shopdeal.redis.cache.windows.net', {auth_pass: 'jO7xTK/QlyhwvQyWQJ8mvllHPquLPpkzMAMbDwMir0I=', tls: {servername: 'shopdeal.redis.cache.windows.net'}});
 
 
-var elasticsearch = require('elasticsearch');
-var client = new elasticsearch.Client({
-  hosts: [
-    {
-      protocol: 'http',
-      host: '13.85.74.134',
-      port: 9200
-    }
-  ]
-});
+//#3 Creating Elastic Search Client deployed on Azure Cloud with its hosts and port
+	var elasticsearch = require('elasticsearch');
+	var client = new elasticsearch.Client({
+	  hosts: [
+		{
+		  protocol: 'http',
+		  host: '13.85.74.134',
+		  port: 9200
+		}
+	  ]
+	});
+	  
+ //Checking id Elastic Search is available.
 
-client.ping({
-  requestTimeout: 30000,
+	client.ping({
+	  requestTimeout: 30000,
 
-}, function (error) {
-  if (error) {
-    console.error('Cluster is not available !');
-  } else {
-    console.log('All clear!');
-  }
-});
+	}, function (error) {
+	  if (error) {
+		console.error('Cluster is not available !');
+	  } else {
+		console.log('All clear!');
+	  }
+	});
 
-
+// Application configurations to use multiple modules
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -56,22 +61,22 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
+//Exceptionhandling
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+// #4 No SQL Mongo DB connection to VM in Azure
 var databaseUrl = "13.85.74.134:27017/ecommerce"; // "username:password@example.com/mydb"
-var collections = ["users"]
+var collections = ["products"];
 //var db = require("mongojs").connect(databaseUrl, collections);
 
 var mongojs = require('mongojs');
 var db = mongojs(databaseUrl, collections);
-//app.get('/', routes.index);
-//app.get('/users', user.list);
 
-//CDN
+
+//#5 Content Delivery Network Cloudinary to host images on its CDN
 var cloudinary = require('cloudinary');
-
 
 cloudinary.config({ 
   cloud_name: 'rmishra', 
@@ -88,36 +93,37 @@ app.get('/index.htm', function (req, res) {
    res.sendfile( __dirname + "/" + "index.htm" );
 });
 
+
+//Display home page on hitting of URL
 app.get('/', function(request, response){
-//	 console.log("I am here");
+	 console.log("Home Page Loaded");
    response.sendfile( path.join(__dirname + "/" +'home.html'));
 });
 
-
+// onclick of Search Button
 app.get('/process_get', function (req, res) {
-
 	
-redisClient.set("key1", "value", function(err, reply) {
-        console.log('redis'+reply);
+redisClient.set("redisKey", "Redis Object Retrieved!", function(err, reply) {
+        console.log('Object Stored in Redis Cache : '+reply);
     });
 
 redisClient.get("key1",  function(err, reply) {
         console.log('redis2'+reply);
     });
-	var age;
+
    // Prepare output in JSON format
-   var searchItem;
-   var displayVal;
-	   var jsonObj;
-	var arrSearchResults = [],
+  var searchItem;
+  var jsonObj;
+  var arrSearchResults = [],
 
    response = {
       searchItem:req.query.searchItem
      //last_name:req.query.last_name
    };
   searchItem = response.searchItem;
- console.log("searchItem ElaStic"+searchItem);
+ console.log("Enter Search Item in Search Box :"+searchItem);
 
+//Elastic search Client  - Query
 client.search({
 	
   index: 'products',
@@ -133,9 +139,9 @@ client.search({
     console.log(results);
     console.log('returned article titles:');
     results.hits.hits.forEach(function(items) {
-    console.log('items'+items);
+    console.log('Elastic Search Results: '+items);
 		itemsObj = 	JSON.stringify(items._source);
-		console.log("ITEM"+itemsObj);
+		console.log("Elastic Search Results ITEM: "+itemsObj);
 	
 		 arrSearchResults.push(itemsObj);
 
@@ -147,6 +153,8 @@ client.search({
 
 
 
+// Onclick of link for a product in search Results Page
+// Connecting to Mongo DB for details to be displayed
 
 app.get('/loadProduct', function (req, res) {
 	console.log("Calling MongoDB to load product Details!");	
@@ -162,7 +170,7 @@ app.get('/loadProduct', function (req, res) {
 	  });
 	   console.log("productName from MongoDb"+productJson);
 
-	   res.render(__dirname + '/product description.html',{data : productJson});
+	   res.render(__dirname + '/product description.html',{productInfo : productJson});
 });
 });
 
