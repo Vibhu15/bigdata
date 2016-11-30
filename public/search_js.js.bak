@@ -68,7 +68,7 @@
 			    for (var j=0; j<3; j++){
 				   var td = document.createElement('TD');				  
 				   td.setAttribute("class", "tdStyle" );
-					/*image=result.img;*/
+					image=result.img;
 				   if(j==0){						   
 						td.width='25%';
 						var DOM_img = document.createElement("img");
@@ -85,7 +85,7 @@
 
 						td.appendChild(document.createTextNode(result.brand));td.appendChild(document.createElement('br'));td.appendChild(document.createElement('br'));
 						td.appendChild(document.createTextNode(result.desc));	td.appendChild(document.createElement('br'));td.appendChild(document.createElement('br'));
-						td.appendChild(document.createTextNode(result.price));
+						td.appendChild(document.createTextNode('$'+result.price));
 
 
 				   } else if(j ==2){

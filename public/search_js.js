@@ -68,7 +68,8 @@
 			    for (var j=0; j<3; j++){
 				   var td = document.createElement('TD');				  
 				   td.setAttribute("class", "tdStyle" );
-					/*image=result.img;*/
+					image=result.img;
+					alert(image);
 				   if(j==0){						   
 						td.width='25%';
 						var DOM_img = document.createElement("img");

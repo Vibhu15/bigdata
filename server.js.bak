@@ -11,6 +11,13 @@ var express = require('express')
 
 var app = express();
 
+
+var redis = require("redis");
+
+  // Add your cache name and access key.
+var client = redis.createClient(6380,'shopdeal.redis.cache.windows.net', {auth_pass: 'jO7xTK/QlyhwvQyWQJ8mvllHPquLPpkzMAMbDwMir0I=', tls: {servername: 'shopdeal.redis.cache.windows.net'}});
+
+
 var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
   hosts: [
@@ -74,7 +81,9 @@ cloudinary.config({
 
 //app.use(express.static('public'));
 
-
+client.on("error", function (err) {
+    console.log("Redis Error " + err);
+});
 app.get('/index.htm', function (req, res) {
    res.sendfile( __dirname + "/" + "index.htm" );
 });
@@ -86,6 +95,15 @@ app.get('/', function(request, response){
 
 
 app.get('/process_get', function (req, res) {
+
+	
+client.set("key1", "value", function(err, reply) {
+        console.log('redis'+reply);
+    });
+
+client.get("key1",  function(err, reply) {
+        console.log('redis2'+reply);
+    });
 	var age;
    // Prepare output in JSON format
    var searchItem;
@@ -133,7 +151,7 @@ client.search({
 app.get('/loadProduct', function (req, res) {
 	console.log("Calling MongoDB to load product Details!");	
 	var productId = req.query.productId;
-	db.products.find({_id: '111111'}, function(err, products) {
+	db.products.find({_id: productId}, function(err, products) {
 	 console.log("Connect to MongoDB");
 	  if( err || !products) console.log("No product found");
 	  else products.forEach( function(product) {
@@ -151,3 +169,6 @@ app.get('/loadProduct', function (req, res) {
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+
+

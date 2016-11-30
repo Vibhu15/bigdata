@@ -11,6 +11,13 @@ var express = require('express')
 
 var app = express();
 
+
+var redis = require("redis");
+
+  // Add your cache name and access key.
+var redisClient = redis.createClient(6380,'shopdeal.redis.cache.windows.net', {auth_pass: 'jO7xTK/QlyhwvQyWQJ8mvllHPquLPpkzMAMbDwMir0I=', tls: {servername: 'shopdeal.redis.cache.windows.net'}});
+
+
 var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
   hosts: [
@@ -74,7 +81,9 @@ cloudinary.config({
 
 //app.use(express.static('public'));
 
-
+redisClient.on("error", function (err) {
+    console.log("Redis Error " + err);
+});
 app.get('/index.htm', function (req, res) {
    res.sendfile( __dirname + "/" + "index.htm" );
 });
@@ -86,6 +95,15 @@ app.get('/', function(request, response){
 
 
 app.get('/process_get', function (req, res) {
+
+	
+redisClient.set("key1", "value", function(err, reply) {
+        console.log('redis'+reply);
+    });
+
+redisClient.get("key1",  function(err, reply) {
+        console.log('redis2'+reply);
+    });
 	var age;
    // Prepare output in JSON format
    var searchItem;
@@ -151,3 +169,6 @@ app.get('/loadProduct', function (req, res) {
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+
+
