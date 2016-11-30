@@ -15,7 +15,7 @@ var app = express();
 var redis = require("redis");
 
   // Add your cache name and access key.
-var client = redis.createClient(6380,'shopdeal.redis.cache.windows.net', {auth_pass: 'jO7xTK/QlyhwvQyWQJ8mvllHPquLPpkzMAMbDwMir0I=', tls: {servername: 'shopdeal.redis.cache.windows.net'}});
+var redisClient = redis.createClient(6380,'shopdeal.redis.cache.windows.net', {auth_pass: 'jO7xTK/QlyhwvQyWQJ8mvllHPquLPpkzMAMbDwMir0I=', tls: {servername: 'shopdeal.redis.cache.windows.net'}});
 
 
 var elasticsearch = require('elasticsearch');
@@ -81,7 +81,7 @@ cloudinary.config({
 
 //app.use(express.static('public'));
 
-client.on("error", function (err) {
+redisClient.on("error", function (err) {
     console.log("Redis Error " + err);
 });
 app.get('/index.htm', function (req, res) {
@@ -97,11 +97,11 @@ app.get('/', function(request, response){
 app.get('/process_get', function (req, res) {
 
 	
-client.set("key1", "value", function(err, reply) {
+redisClient.set("key1", "value", function(err, reply) {
         console.log('redis'+reply);
     });
 
-client.get("key1",  function(err, reply) {
+redisClient.get("key1",  function(err, reply) {
         console.log('redis2'+reply);
     });
 	var age;
@@ -156,12 +156,13 @@ app.get('/loadProduct', function (req, res) {
 	  if( err || !products) console.log("No product found");
 	  else products.forEach( function(product) {
 		console.log(product);
-			pName = 	product.name;
-			 console.log("pName"+pName);
+		//	pName = 	product.name;
+			// console.log("pName"+pName);
+			productJson = JSON.stringify(product);
 	  });
-	   console.log("productName from MongoDb"+pName);
+	   console.log("productName from MongoDb"+productJson);
 
-	   res.render(__dirname + '/product description.html',{data : pName});
+	   res.render(__dirname + '/product description.html',{data : productJson});
 });
 });
 

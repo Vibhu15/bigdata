@@ -156,12 +156,13 @@ app.get('/loadProduct', function (req, res) {
 	  if( err || !products) console.log("No product found");
 	  else products.forEach( function(product) {
 		console.log(product);
-			pName = 	product.name;
-			 console.log("pName"+pName);
+		//	pName = 	product.name;
+			// console.log("pName"+pName);
+			productJson = JSON.stringify(product);
 	  });
-	   console.log("productName from MongoDb"+pName);
+	   console.log("productName from MongoDb"+productJson);
 
-	   res.render(__dirname + '/product description.html',{data : pName});
+	   res.render(__dirname + '/product description.html',{productInfo : productJson});
 });
 });
 

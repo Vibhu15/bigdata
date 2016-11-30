@@ -1,130 +1,112 @@
-<!doctype html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
-  <title>Product Description</title>
-  <link rel = "stylesheet"
-   type = "text/css"
-   href = "search.css" />
- </head>
- <body>
+	<!doctype html>
+	<html lang="en">
+	 <head>
+	  <meta charset="UTF-8">
+	  <meta name="Generator" content="EditPlus®">
+	  <meta name="Author" content="">
+	  <meta name="Keywords" content="">
+	  <meta name="Description" content="">
+	  <title>Product Description</title>
+	  <link rel = "stylesheet"
+	   type = "text/css"
+	   href = "search.css" />
+
+	 <script src="jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="prod_desc_js.js"></script>
+	 </head>
+	 <body>
+	<form class="getProductDetails" method="get" action="http://127.0.0.1:8081/process_get">
+	<div style="display:none;"  id="productInfo"><%= productInfo %></div>
+	<table id="pageTable">
+
+<table id="pageTable">
+<tr>
+<td>
+	<div id="top" >
+	<img align="left" src="http://res.cloudinary.com/rmishra/image/upload/v1480447328/Online_shopping.png" 
+		 width="300" height="150"/>
+		 
+	 <div align="right" style="position:relative;top:120px;font-weight:bold;color:#F0F8FF;">
+	 Hello, Richa
+	 <img alt="cart" src="http://res.cloudinary.com/rmishra/image/upload/v1480373870/shopping_cart.jpg" width="20" height="20"/> Cart 
+	</div>
+	</div>
+<td>
+</tr>
+<tr>
+<td>
+	<div id="productDetails">
 
 
- <h1> sample </h1>
+	<table id="productTable">
+		<tr>
+		<td id="productImgTD" width="35%">  </td>
+		<td> 
+		<h4><label for="brand"> Brand:&nbsp;</label> <label id="idBrand" > </label></h4> 
+	<label for="name"><b> Name:&nbsp; </b></label> <label id="idName" > </label> 
+	<br><br>
+	<label for="regprice" style=" font-weight: bold;"> Price: &nbsp;$ </label> <label id="idPrice" style="color:#cc0000"> </label>
+	<br>
+	Inclusive of all taxes<br><br><br>
+	<label for="description" style=" font-weight: bold;" > Product Description:&nbsp;</label><label id="idDesc" > </label>
+	<br>
+	<label for="modelnumber" style=" font-weight: bold;"> Model Number:&nbsp; </label><label id="idModel" > </label>
+	<br><br><br>
+	<label for="rating" style=" font-weight: bold;"> Customer Rating:&nbsp;</label><label id="idRating" > </label>
+	<br>
+	</td>
+	</tr>
+	</table>
+	</td></tr>
+	 </div>
+	 </table>
+	 </form>
 
- <br><br>
- <a href='home.html'> Back to search page </a>
- <br> <br>
-<div   id="pName"><%= pName %></div>
+	<div id="footer"> 
 
+	<a href='home.html'> Back to search page </a>
+	<table align="center"  id="footerinfo">
 
- <br> <br>
-  "_id": "111101",
-	    
-	    "desc":  "Graphic high density and rubber print combination with reflective details, drywell, message back neck tape, rib collar" ,
-	    "name": "Puma Mens Round Neck Cotton T-Shirt",
-	    "lname": "puma mens round neck cotton t-shirt",
-	    "category": "/84700/80009/1282094266/1200003271",
-	    "rating": "5",
-	    "brand": {
-		"id": "2483511",
-		"img": {
-		    "src": "http://res.cloudinary.com/rmishra/image/upload/v1480398303/111101_1.jpg"
-		},
-		"name": "Puma"
-	    },
-	    "manufacture_details": {
-		  "model_number": "59143324",
-		  "release_date": new ISODate("2012-06-17T08:14:15.656Z")
-	    },
-	     "price": {
-	     "regular_price": "769.99",
-	     "sale": {
-		   "salePrice": "442.72",
-		    "saleEndDate": "2016-12-31 23:59:59"
-		    }
-		 },
-	    "assets": {
-		"imgs": [
-		    {
-			"img": {
-			    "height": "1900",
-			    "src": "http://res.cloudinary.com/rmishra/image/upload/v1480398303/111101_1.jpg",
-			    "width": "1900"
-			}
-		    },
-		    {
-			"img": {
-			    "height": "1900",
-			    "src": "http://res.cloudinary.com/rmishra/image/upload/v1480398728/111101_02.jpg",
-			    "width": "1900"
-			}
-		    },
-		    {
-			"img": {
-			    "height": "1900",
-			    "src": "Junk",
-			    "width": "1900"
-			}
-		    }
-		]
-	    },
-	    "shipping": {
-		"dimensions": {
-		    "Size": "Large",
-		    
-		},
-		"weight": "1.75"
-	    },
-	    "specs": [
-		{
-		    "name": "Junk",
-		    "val": "0.0"
-		}
-	    ],
-	    "attrs": [
-		{
-		    "name": "Sleeve Type",
-		    "value": "Half Sleeve"
-		},
-		{
-		    "name": "Material",
-		    "value": "Cotton"
-		},
-		{
-		    "name": "Fit",
-		    "value": "Slim Fit"
-		},
-		{
-		    "name": "Brand",
-		    "value": "Puma"
-		}
-	    ],
-	    "variants": {
-		"cnt": 9,
-		"attrs": [
-		    {
-			"dispType": "COMBOBOX",
-			"name": "Neck Type",
-		    },
-		    {
-			"dispType": "DROPDOWN",
-			"name": "Color",
-		    },
-		    {
-			"dispType": "DROPDOWN",
-			"name": "Shirt Size",
-		    }
-		]
-	    },
-	    "lastUpdated": 1400877254787" ,
+	  <tr>
+		<th>Get to Know Us</th>
+		<th>Connect with Us</th>
+		<th>Make Money with Us</th>
+		<th>Let Us Help You</th>
+	  </tr>
+	  <tr>
+		<td><a href="#"> About Us </a> </td>
+		<td><a href="#"> Facebook </a></td>
+		<td><a href="#"> Refer & Earn Rs.200</a></td>
+		<td><a href="#"> Your Account</a></td>
+	  </tr>
+	  <tr>
+		<td><a href="#"> Careers</a></td>
+		<td><a href="#"> Twitter</a></td>
+		<td><a href="#"> Sell on Online Store</a></td>
+		<td><a href="#"> Returns Centre </a></td>
+	  </tr>
+	  <tr>
+		<td><a href="#"> Press Releases</a></td>
+		<td><a href="#"> Instagram</a></td>
+		<td><a href="#"> Become an Affiliate</a></td>
+		<td><a href="#"> 100% Purchase Protection</a></td>
+	  </tr>
+	  <tr>
+		<td><a href="#"> Online Store Cares</a></td>
+		<td><a href="#"> The OnlineStore.in Blog</a></td>
+		<td><a href="#"> Advertise Your Products</a></td>
+		<td><a href="#"> Help</a></td>
+	  </tr>
+	  <tr>
+		<td><a href="#"> Gift a Smile</a></td>
+		<td></td>
+		<td></td>
+		<td><a href="#"> Online Store Assistant</a></td>
+	  </tr>
+	</table>
+
+	</div>
 
 
-
-
- </body>
-</html>
+	 </body>
+	</html>

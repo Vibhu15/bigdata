@@ -1,0 +1,39 @@
+			 var productInfo;
+			$( document ).ready(function() {
+				console.log( "Product Description ready!" );
+				//	alert('start');
+				// var graphData = '#{graphData}'
+			  productInfo = $("#productInfo").html(); 
+
+				if(productInfo == '&lt;%= productInfo %&gt;' || productInfo == undefined ){
+					//alert('blank');
+					productInfo='';
+				}
+				else{
+				//alert('val'+searchResults);
+						<h4><label for="brand"> Brand:</label> <label id="idBrand" > </label></h4> 
+		<label for="name"><b> Name: </b></label> <label id="idName" > </label> 
+		<br><br>
+		<label for="regprice"> Price: $ </label> <label id="idPrice" > </label>
+		<br>
+		Inclusive of all taxes<br><br><br>
+		<label for="description"> Product Description:</label><label id="idDesc" > </label>
+		<br>
+		<label for="modelnumber"> Model Number: </label><label id="idModel" > </label>
+		<br><br><br>
+		<label for="rating"> Customer Rating:</label><label id="idRating" > </label>
+
+				var productInfoJSON = JSON.parse(productInfo);
+				$("#productImgTD").html('<img class="fluid-img" src="'+productInfoJSON.brand.img.src+'">'); 
+				$("#productImgTD").html(productInfoJSON.);
+				$("#productImgTD").html(productInfoJSON.);
+				$("#productImgTD").html(productInfoJSON.);
+				$("#productImgTD").html(productInfoJSON.);
+				$("#productImgTD").html(productInfoJSON.);
+				$("#productImgTD").html(productInfoJSON.);
+
+
+				}
+			});
+
+
