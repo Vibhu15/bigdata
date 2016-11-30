@@ -19,10 +19,7 @@
  <br><br>
  <a href='home.html'> Back to search page </a>
  <br> <br>
-<div   id="pName"><%= pName %></div>
 
-
- <br> <br>
   "_id": "111101",
 	    
 	    "desc":  "Graphic high density and rubber print combination with reflective details, drywell, message back neck tape, rib collar" ,

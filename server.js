@@ -102,8 +102,8 @@ app.get('/process_get', function (req, res) {
 
 client.search({
 	
-  index: 'hello',
-  type: 'world',
+  index: 'products',
+  type: 'product',
   body: {
     query: {
       match: {
@@ -126,6 +126,27 @@ client.search({
    res.render(__dirname + '/home.html',{ searchResults: arrSearchResults});
 }); 
 });
+
+
+
+
+app.get('/loadProduct', function (req, res) {
+	console.log("Calling MongoDB to load product Details!");	
+	var productId = req.query.productId;
+	db.products.find({_id: productId}, function(err, products) {
+	 console.log("Connect to MongoDB");
+	  if( err || !products) console.log("No product found");
+	  else products.forEach( function(product) {
+		console.log(product);
+			pName = 	product.name;
+			 console.log("pName"+pName);
+	  });
+	   console.log("productName from MongoDb"+pName);
+
+	   res.render(__dirname + '/product description.html',{data : pName});
+});
+});
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

@@ -48,11 +48,11 @@
 			var brand = " Adidas ";
 			var price = " $45.00 ";
 			var rating = " 5 ";
-			var rating1 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_30/v1480389207/rating_1.jpg" //document.getElementById("rating");
-			var rating2 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_30/v1480389207/rating_2.jpg";
-			var rating3 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_30/v1480389207/rating_3.jpg";
-			var rating4 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_30/v1480389207/rating_4.jpg";
-			var rating5 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_30/v1480389207/rating_5.jpg";
+			var rating1 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_20/v1480389207/rating_1.jpg" //document.getElementById("rating");
+			var rating2 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_20/v1480389207/rating_2.jpg";
+			var rating3 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_20/v1480389207/rating_3.jpg";
+			var rating4 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_20/v1480389207/rating_4.jpg";
+			var rating5 =  "http://res.cloudinary.com/rmishra/image/upload/w_100,h_20/v1480389207/rating_5.jpg";
 
 			var searchResultsJson = '['+searchResults+']';
 
@@ -78,14 +78,14 @@
 				   }else if(j ==1){				
 						td.width='55%';
 				 	    var aTag = document.createElement('a');
-						aTag.setAttribute('href',"product description.html");
+						aTag.setAttribute('href',"/loadProduct?productId="+result.id);
 						aTag.innerHTML = result.name;
 					
 					    td.appendChild(aTag /*document.createTextNode(brand)*/ ); td.appendChild(document.createElement('br'));
 
 						td.appendChild(document.createTextNode(result.brand));td.appendChild(document.createElement('br'));td.appendChild(document.createElement('br'));
 						td.appendChild(document.createTextNode(result.desc));	td.appendChild(document.createElement('br'));td.appendChild(document.createElement('br'));
-						td.appendChild(document.createTextNode('$126.00'));
+						td.appendChild(document.createTextNode(result.price));
 
 
 				   } else if(j ==2){

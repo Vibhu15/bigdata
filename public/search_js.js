@@ -78,14 +78,14 @@
 				   }else if(j ==1){				
 						td.width='55%';
 				 	    var aTag = document.createElement('a');
-						aTag.setAttribute('href',"product description.html");
+						aTag.setAttribute('href',"/loadProduct?productId="+result.id);
 						aTag.innerHTML = result.name;
 					
 					    td.appendChild(aTag /*document.createTextNode(brand)*/ ); td.appendChild(document.createElement('br'));
 
 						td.appendChild(document.createTextNode(result.brand));td.appendChild(document.createElement('br'));td.appendChild(document.createElement('br'));
 						td.appendChild(document.createTextNode(result.desc));	td.appendChild(document.createElement('br'));td.appendChild(document.createElement('br'));
-						td.appendChild(document.createTextNode('$126.00'));
+						td.appendChild(document.createTextNode('$'+result.price));
 
 
 				   } else if(j ==2){
