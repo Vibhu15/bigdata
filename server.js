@@ -131,7 +131,13 @@ client.search({
   body: {
     query: {
       match: {
-        desc: searchItem
+        desc: {
+    query: searchItem,
+   // minimum_should_match: 3,
+    fuzziness: 2
+  }
+		// desc: searchItem,
+			// fuzziness: 2
       }
     }
   }

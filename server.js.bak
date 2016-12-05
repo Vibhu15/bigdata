@@ -107,8 +107,8 @@ redisClient.set("redisKey", "Redis Object Retrieved!", function(err, reply) {
         console.log('Object Stored in Redis Cache : '+reply);
     });
 
-redisClient.get("key1",  function(err, reply) {
-        console.log('redis2'+reply);
+redisClient.get("redisKey",  function(err, reply) {
+        console.log('Object redisKey retrieved from Redis Cache:'+reply);
     });
 
    // Prepare output in JSON format
@@ -131,7 +131,13 @@ client.search({
   body: {
     query: {
       match: {
-        desc: searchItem
+        desc: {
+    query: searchItem,
+   // minimum_should_match: 3,
+    fuzziness: 6
+  }
+		// desc: searchItem,
+			// fuzziness: 2
       }
     }
   }
